@@ -1,0 +1,25 @@
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Forecast Data</title>
+</head>
+<body>
+<h2>Darksky Weather Data</h2>
+<br>
+	<table border="1">
+		<tr>
+			<th>Location</th>
+			<th>High Temperature</th>
+			<th>Low Temperature</th>
+		</tr>
+		<tr th:each="forecastMap : ${forecastMap}">
+
+<div  th:if="${forecastMap.value.daily.data[0].temperatureHigh != null && forecastMap.value.daily.data[0].temperatureLow != null}">
+			<td th:text="${forecastMap.key}">Location</td>
+			<td th:text="${forecastMap.value.daily.data[0].temperatureHigh}"></td>
+			<td th:text="${forecastMap.value.daily.data[0].temperatureLow}"></td>
+</div>
+		</tr> 
+	</table>
+</body>
+</html>
